@@ -88,7 +88,7 @@ loop_over_files <- function(pos, symbol2EntrezId, twas_results, nparam, sampleSi
     # calculate probit transformed p-value - this is how magma does it
     twas_probit <- qnorm(twas_p, lower.tail = F)
     # p-values = 1 generate "-Inf" - conver to mean
-    twas_probit[twas_probit == "-Inf"] <- -3.09
+    twas_probit[twas_probit == "-Inf"] <- -3.09 # because -Inf will break MAGMA
         
     # read ld file if exists
     file <- paste0(matrix_dir,"/",gene,".csv")
